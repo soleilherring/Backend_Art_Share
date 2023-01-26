@@ -14,8 +14,17 @@ class User(models.Model):
         return self.name
 
 class Category(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField()
+    CATEGORY_CHOICES = (
+        ('Painting', 'Painting'),
+        ('Ceramics', 'Ceramics'),
+        ('Knitting and Crocheting', 'Knitting and Crocheting'),
+        ('Illustration and Drawing', 'Illustration and Drawing'),
+        ('Embroidery', 'Embroidery'),
+        ('Sculpture', 'Sculpture'),
+    )
+    name = models.CharField(max_length=200, choices=CATEGORY_CHOICES)
+    # name = models.CharField(max_length=200)
+    # description = models.TextField()
     # item  = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -27,7 +36,8 @@ class Item(models.Model):
     description = models.TextField("Description", null=True,blank=True)
     image = models.ImageField()
     condition = models.CharField(max_length=50, default='Unknown') 
-    category = models.CharField(max_length=50, default='Uncategorized')    
+    # category = models.CharField(max_length=50, default='Uncategorized')    
+    categories = models.ManyToManyField(Category)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
