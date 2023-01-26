@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class User(models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=255)
-    username = models.CharField("Username", max_length=200, default='Unknown')
-    email = models.EmailField()
+    # username = models.CharField("Username", max_length=200, default='Unknown')
+    # email = models.EmailField()
     image = models.ImageField()
     # registrationDate = models.DateField("Registration Date", auto_now_add=True)
 
