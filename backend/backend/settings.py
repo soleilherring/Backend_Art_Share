@@ -15,6 +15,13 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import os
+import environ 
+
+# initialize envir  variables
+env = environ.ENV()
+environ.Env.read_env()
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n^tyu0i4s8-32s$kr$jtddvil=x328996a@#3omn$(*+e$i^(r'
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
