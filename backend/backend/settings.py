@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'marketplace', 
     'cloudinary',
-    # 'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -147,6 +146,7 @@ MEDIA_URL = '/media/'
 cloudinary.config( 
   cloud_name = "dyzttpr3i", 
   api_key = "944879436414213", 
-  api_secret = "-kZEJ2i9h9NE8fkrB05Nwaak_8Q" 
+  api_secret = "-kZEJ2i9h9NE8fkrB05Nwaak_8Q", 
+  secure = True
 )
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
