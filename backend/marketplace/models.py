@@ -1,6 +1,9 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+# from cloudinary.uploader import upload
 
+# uploaded_image = upload(file_path)
+# item = Item.objects.create(name=name, description=description, image=uploaded_image, condition=condition, owner=owner)
 # from django.contrib.auth.models import User
 
 class User(models.Model):
