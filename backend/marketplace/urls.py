@@ -1,4 +1,4 @@
-# from django.urls import path
+from django.urls import path
 # from . import views
 
 # urlpatterns =[
@@ -14,5 +14,6 @@ router.register(r'api/items', ItemViewSet, 'items')
 router.register(r'api/reviews', ReviewViewSet, 'reviews') 
 router.register(r'api/users', UserViewSet, 'users') 
 router.register(r'api/categories', CategoryViewSet, 'categories') 
+router.register(r'api/categories/posts', CategoryViewSet, 'categories/items') 
 
 urlpatterns = router.urls
