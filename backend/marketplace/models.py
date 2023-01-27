@@ -18,10 +18,13 @@ class Category(models.Model):
     CATEGORY_CHOICES = (
         ('Painting', 'Painting'),
         ('Ceramics', 'Ceramics'),
-        ('Knitting and Crocheting', 'Knitting and Crocheting'),
+        ('Yarn and Needlework', 'Yarn and Needlework'),
         ('Illustration and Drawing', 'Illustration and Drawing'),
-        ('Embroidery', 'Embroidery'),
         ('Sculpture', 'Sculpture'),
+        ('Printmaking', 'Printmaking'),
+        ('Photography', 'Photography'),
+        ('Calligraphy', 'Calligraphy'),
+        ('Textiles', 'Textiles'),
     )
     name = models.CharField(max_length=200, choices=CATEGORY_CHOICES)
     # name = models.CharField(max_length=200)
