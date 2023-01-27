@@ -46,7 +46,7 @@ class Item(models.Model):
     image = CloudinaryField('image')
     condition = models.CharField(max_length=50, default='Unknown') 
     # category = models.CharField(max_length=50, default='Uncategorized')    
-    category = models.ManyToManyField(Category)
+    category = models.ManyToManyField(Category, related_name="items")
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
