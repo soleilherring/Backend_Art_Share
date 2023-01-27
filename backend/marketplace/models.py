@@ -8,7 +8,6 @@ class User(models.Model):
     email = models.EmailField()
     location = models.CharField(max_length=255)
     password = models.CharField(max_length=200, default='Unknown')
-    email = models.EmailField()
     # image = models.ImageField()
     # registrationDate = models.DateField("Registration Date", auto_now_add=True)
 
@@ -33,14 +32,13 @@ class Category(models.Model):
         return self.name
 
 class Item(models.Model):
-    # CATEGORY = (('Painting'), ('Ceramics'), ('Knitting and Crocheting'), ('Illustration and Drawing'), ('Embroidery'), ('Sculpture'))
     name = models.CharField("Name", max_length=50)
     description = models.TextField("Description", null=True,blank=True)
     # image = models.ImageField()
     image = CloudinaryField('image')
     condition = models.CharField(max_length=50, default='Unknown') 
     # category = models.CharField(max_length=50, default='Uncategorized')    
-    categories = models.ManyToManyField(Category)
+    category = models.ManyToManyField(Category)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
