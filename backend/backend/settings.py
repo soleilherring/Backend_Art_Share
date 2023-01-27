@@ -18,7 +18,7 @@ import os
 import environ 
 
 # initialize envir  variables
-env = environ.ENV()
+env = environ.Env()
 environ.Env.read_env()
 
 
