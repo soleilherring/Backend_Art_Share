@@ -11,16 +11,26 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
 import os
-import environ 
+# import environ #copied from Tiff
+from environs import Env #using documentation?
 
 # initialize envir  variables
-env = environ.Env()
-environ.Env.read_env()
+# tiff's version 
+# env = environ.Env()
+# environ.Env.read_env()
 
+# new version 
+env = Env()
+
+# new version:
+env.read_env()
+print("getting secret key ")
+SECRET_KEY = env("SECRET_KEY")
+print(SECRET_KEY)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,12 +41,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
-
+# print("getting secret key ")
+# SECRET_KEY = env("SECRET_KEY")
+# print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True #was true as default
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] #was empty  as default
 
 
 # Application definition
@@ -50,7 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'marketplace', 
-    'cloudinary',
+    # 'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -152,10 +163,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # # Path where media is stored
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-cloudinary.config( 
-  cloud_name = "dyzttpr3i", 
-  api_key = "944879436414213", 
-  api_secret = "-kZEJ2i9h9NE8fkrB05Nwaak_8Q", 
-  secure = True
-)
+# cloudinary.config( 
+#   cloud_name = "dyzttpr3i", 
+#   api_key = "944879436414213", 
+#   api_secret = "-kZEJ2i9h9NE8fkrB05Nwaak_8Q", 
+#   secure = True
+# )
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
