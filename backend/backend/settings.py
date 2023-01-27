@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -140,3 +143,8 @@ MEDIA_URL = '/media/'
 # # Path where media is stored
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+cloudinary.config( 
+  cloud_name = "dyzttpr3i", 
+  api_key = "944879436414213", 
+  api_secret = "-kZEJ2i9h9NE8fkrB05Nwaak_8Q" 
+)

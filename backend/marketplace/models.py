@@ -1,4 +1,6 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
+
 # from django.contrib.auth.models import User
 
 class User(models.Model):
@@ -34,7 +36,8 @@ class Item(models.Model):
     # CATEGORY = (('Painting'), ('Ceramics'), ('Knitting and Crocheting'), ('Illustration and Drawing'), ('Embroidery'), ('Sculpture'))
     name = models.CharField("Name", max_length=50)
     description = models.TextField("Description", null=True,blank=True)
-    image = models.ImageField()
+    # image = models.ImageField()
+    image = CloudinaryField('image')
     condition = models.CharField(max_length=50, default='Unknown') 
     # category = models.CharField(max_length=50, default='Uncategorized')    
     categories = models.ManyToManyField(Category)
