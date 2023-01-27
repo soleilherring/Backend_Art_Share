@@ -1,0 +1,90 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Smith",
+      "email": "johnsmith@gmail.com",
+      "location": "New York, NY",
+      "password": "password123"
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "email": "janedoe@gmail.com",
+      "location": "Los Angeles, CA",
+      "password": "password456"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Painting"
+    },
+    {
+      "id": 2,
+      "name": "Ceramics"
+    },
+    {
+      "id": 3,
+      "name": "Yarn and Needlework"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Mona Lisa",
+      "description": "Famous painting by Leonardo da Vinci",
+      "image": "https://example.com/images/mona_lisa.jpg",
+      "condition": "Excellent",
+      "category": [1],
+      "owner": 1
+    },
+    {
+      "id": 2,
+      "name": "Vase",
+      "description": "Handmade ceramic vase",
+      "image": "https://example.com/images/vase.jpg",
+      "condition": "Good",
+      "category": [2],
+      "owner": 2
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "user": 1,
+      "itemId": 1,
+      "location": "New York, NY",
+      "date": "2022-01-01T12:00:00Z",
+      "likes": 10,
+      "reserved": false
+    },
+    {
+      "id": 2,
+      "user": 2,
+      "itemId": 2,
+      "location": "Los Angeles, CA",
+      "date": "2022-01-02T12:00:00Z",
+      "likes": 5,
+      "reserved": true
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "user": 1,
+      "post": 1,
+      "text": "This is a great painting",
+      "rating": 5,
+      "date": "2022-01-03T12:00:00Z"
+    },
+    {
+      "id": 2,
+      "user": 2,
+      "post": 2,
+      "text": "I love this vase",
+      "rating": 4,
+      "date": "2022-01-04T12:00:00Z"
+    }
+  ]
+}
