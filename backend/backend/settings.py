@@ -14,6 +14,7 @@ from pathlib import Path
 # import cloudinary
 # import cloudinary.uploader
 # import cloudinary.api
+
 import os
 # import environ #copied from Tiff
 from environs import Env #using documentation?
@@ -156,9 +157,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # # Base url to serve media files
-# MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # # Path where media is stored
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 

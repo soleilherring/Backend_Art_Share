@@ -1,5 +1,5 @@
 from django.db import models
-from cloudinary.models import CloudinaryField
+# from cloudinary.models import CloudinaryField
 # from cloudinary.uploader import upload
 
 # uploaded_image = upload(file_path)
@@ -40,10 +40,10 @@ class Category(models.Model):
 class Item(models.Model):
     name = models.CharField("Name", max_length=50)
     description = models.TextField("Description", null=True,blank=True)
-    # image = models.ImageField(upload_to='images/')
+    image = models.FileField(upload_to='media/')
     # image = models.ImageField('image', null=True, blank=True)
 
-    image = CloudinaryField('image')
+    # image = CloudinaryField('image')
     condition = models.CharField(max_length=50, default='Unknown') 
     # category = models.CharField(max_length=50, default='Uncategorized')    
     category = models.ManyToManyField(Category, related_name="items")
