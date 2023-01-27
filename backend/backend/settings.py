@@ -28,9 +28,8 @@ env = Env()
 
 # new version:
 env.read_env()
-print("getting secret key ")
 SECRET_KEY = env("SECRET_KEY")
-print(SECRET_KEY)
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

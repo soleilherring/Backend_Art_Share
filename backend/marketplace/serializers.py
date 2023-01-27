@@ -17,10 +17,13 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = '__all__'
 
+
 class CategorySerializer(serializers.ModelSerializer):
+    # variable that reperesnts list of items 
+    items = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ('items', "name", "id")
     
 
 class ReviewSerializer(serializers.ModelSerializer):
