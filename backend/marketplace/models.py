@@ -37,22 +37,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Item(models.Model):
-    name = models.CharField("Name", max_length=50)
-    description = models.TextField("Description", null=True,blank=True)
-    # image = models.FileField(upload_to='media/')
-    # image = models.ImageField('image', null=True, blank=True)
-    image = models.ImageField()
-    # image = CloudinaryField('image')
-    condition = models.CharField(max_length=50, default='Unknown') 
-    # category = models.CharField(max_length=50, default='Uncategorized')    
-    category = models.ManyToManyField(Category, related_name="items")
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    itemId = models.ForeignKey(Item, on_delete=models.CASCADE)
+    # itemId = models.ForeignKey(Item, on_delete=models.CASCADE)
     location = models.CharField(max_length=255)
     date = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
@@ -60,10 +47,24 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['reserved']
-    
+
+class Item(models.Model):
+    name = models.CharField("Name", max_length=50)
+    description = models.TextField("Description", null=True,blank=True)
+    # image = models.FileField(upload_to='media/')
+    # image = models.ImageField('image', null=True, blank=True)
+    # image = models.ImageField()
+    # image = CloudinaryField('image')
+    image = models.ImageField(upload_to='')
+    condition = models.CharField(max_length=50, default='Unknown') 
+    # category = models.CharField(max_length=50, default='Uncategorized')    
+    category = models.ManyToManyField(Category, related_name="items")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    postId = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="items",blank=True, null=True)
 
 class Review(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    reviewer = models.ForeignKey(User, related_name='reviewer', on_delete=models.CASCADE,  null=True,blank=True)
+    reviewed_user = models.ForeignKey(User, on_delete=models.CASCADE,  null=True,blank=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     text = models.TextField()
     rating = models.IntegerField()
