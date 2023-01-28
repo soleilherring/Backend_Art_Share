@@ -55,7 +55,7 @@ class Item(models.Model):
     # image = models.ImageField('image', null=True, blank=True)
     # image = models.ImageField()
     # image = CloudinaryField('image')
-    image = models.ImageField(upload_to='')
+    image = models.ImageField(upload_to='images/')
     condition = models.CharField(max_length=50, default='Unknown') 
     # category = models.CharField(max_length=50, default='Uncategorized')    
     category = models.ManyToManyField(Category, related_name="items")
