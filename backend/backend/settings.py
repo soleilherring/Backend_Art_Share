@@ -11,18 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-# import cloudinary
-# import cloudinary.uploader
-# import cloudinary.api
+
 
 import os
 # import environ #copied from Tiff
 from environs import Env #using documentation?
-
-# initialize envir  variables
-# tiff's version 
-# env = environ.Env()
-# environ.Env.read_env()
 
 # new version 
 env = Env()
@@ -61,7 +54,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'marketplace', 
-    # 'cloudinary',
 ]
 
 MIDDLEWARE = [
