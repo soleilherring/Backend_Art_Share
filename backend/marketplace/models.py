@@ -61,6 +61,9 @@ class Item(models.Model):
     category = models.ManyToManyField(Category, related_name="items")
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     postId = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="items",blank=True, null=True)
+    
+    def __str__(self):
+        return self.name
 
 class Review(models.Model):
     reviewer = models.ForeignKey(User, related_name='reviewer', on_delete=models.CASCADE,  null=True,blank=True)
