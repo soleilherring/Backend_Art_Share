@@ -17,6 +17,9 @@ import os
 # import environ #copied from Tiff
 from environs import Env #using documentation?
 
+# cloudinary
+import cloudinary
+
 # new version 
 env = Env()
 
@@ -54,6 +57,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'marketplace', 
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -151,14 +156,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # # Base url to serve media files
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # # Path where media is stored
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-# cloudinary.config( 
-#   cloud_name = "dyzttpr3i", 
-#   api_key = "944879436414213", 
-#   api_secret = "-kZEJ2i9h9NE8fkrB05Nwaak_8Q", 
-#   secure = True
-# )
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_URL = env("CLOUDINARY_URL")
