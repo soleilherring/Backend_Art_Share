@@ -29,28 +29,27 @@ class PostViewSet(viewsets.ModelViewSet):
     # api/items?owner_id={user_id}
     
     def create(self, request, *args, **kwargs):
-        # check if use is logged in, if not throw permission error
-        # check if user owns the items in the items list
-        #    if yes, create the post
-        print("this is request.data before entering an if statement",request.data)
-        print("this is request before entering an if statement",request)
-        print("this is request.user before entering an if statement",request.user)
 
         if request.user == None: 
-            print('request.user if statement',request.data)
             raise exceptions.NotAuthenticated()
-        # items_list = Item.objects.filter(owner_id=request.user.id)
-        
-        # brandon version that did work but now doesnt...
-        # for item_id in request.data["items"]:
-        print("request.data[items] before entering if statement and after request.user check", request.data["items"])
+
         for item_id in request.data["items"]:
-            print('inside item_id if statement',request.data)
-            print("queryset",Item.objects.exclude(owner_id=request.user.id).filter(pk=item_id))
             if Item.objects.exclude(owner_id=request.user.id).filter(pk=item_id):
                 raise exceptions.PermissionDenied() 
         
         return super().create(request, *args, **kwargs)
+    
+    def partial_update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+
+        if request.user == None: 
+            raise exceptions.NotAuthenticated()
+            
+        for item_id in request.data["items"]:
+            if Item.objects.exclude(owner_id=request.user.id).filter(pk=item_id):
+                raise exceptions.PermissionDenied() 
+        
+        return super().update(request, *args, **kwargs)
 
 # update and filtering 
 
