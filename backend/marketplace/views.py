@@ -19,7 +19,7 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
 
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['user', 'items', 'title','date']
+    filterset_fields = ['user', 'category', 'title','date']
 
 
     # def create(self, request):
@@ -28,28 +28,19 @@ class PostViewSet(viewsets.ModelViewSet):
     # in reacct, when doing create post, will grab items endpoint and pass in user id
     # api/items?owner_id={user_id}
     
-    def create(self, request, *args, **kwargs):
 
-        if request.user == None: 
-            raise exceptions.NotAuthenticated()
-
-        for item_id in request.data["items"]:
-            if Item.objects.exclude(owner_id=request.user.id).filter(pk=item_id):
-                raise exceptions.PermissionDenied() 
-        
-        return super().create(request, *args, **kwargs)
     
-    def partial_update(self, request, *args, **kwargs):
-        kwargs['partial'] = True
+    # def partial_update(self, request, *args, **kwargs):
+    #     kwargs['partial'] = True
 
-        if request.user == None: 
-            raise exceptions.NotAuthenticated()
+    #     if request.user == None: 
+    #         raise exceptions.NotAuthenticated()
             
-        for item_id in request.data["items"]:
-            if Item.objects.exclude(owner_id=request.user.id).filter(pk=item_id):
-                raise exceptions.PermissionDenied() 
+    #     for item_id in request.data["items"]:
+    #         if Item.objects.exclude(owner_id=request.user.id).filter(pk=item_id):
+    #             raise exceptions.PermissionDenied() 
         
-        return super().update(request, *args, **kwargs)
+    #     return super().update(request, *args, **kwargs)
 
 # update and filtering 
 
@@ -79,12 +70,12 @@ class PostViewSet(viewsets.ModelViewSet):
     #     return JsonResponse({'items': items})
 
 
-class ItemViewSet(viewsets.ModelViewSet):
-    serializer_class = ItemSerializer
-    queryset = Item.objects.all()
+# class PostIViewSet(viewsets.ModelViewSet):
+#     serializer_class = ItemSerializer
+#     queryset = Item.objects.all()
 
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['owner', 'category', 'condition']
+#     filter_backends = [DjangoFilterBackend]
+#     filterset_fields = ['owner', 'category', 'condition']
 
 class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
