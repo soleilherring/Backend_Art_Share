@@ -56,7 +56,7 @@ class PostSerializer(serializers.ModelSerializer):
         # print("this is the category queryset", category)
         # post.category.set(category)
         category = Category.objects.get(name__in=category_data)
-        post.category.add(category)
+        post.category.set(category)
 
         return post
     
