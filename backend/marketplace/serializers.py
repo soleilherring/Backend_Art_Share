@@ -51,10 +51,12 @@ class PostSerializer(serializers.ModelSerializer):
         for image in uploaded_images:
             newpost_image = PostImage.objects.create(post=post, image=image)
 
-        # for category_item in category_data:
-        category = Category.objects.filter(name=category_data)
-        print("this is the category queryset", category)
-        post.category.set(category)
+        # # for category_item in category_data:
+        # category = Category.objects.filter(name=category_data)
+        # print("this is the category queryset", category)
+        # post.category.set(category)
+        category = Category.objects.get(name__in=category_data)
+        post.category.add(category)
 
         return post
     
