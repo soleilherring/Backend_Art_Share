@@ -14,5 +14,4 @@ router.register(r'api/posts', PostViewSet, 'posts')
 router.register(r'api/reviews', ReviewViewSet, 'reviews') 
 router.register(r'api/users', UserViewSet, 'users') 
 router.register(r'api/categories', CategoryViewSet, 'categories') 
-# 
 urlpatterns = router.urls
