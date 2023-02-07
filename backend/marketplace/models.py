@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 
 class User(models.Model):
     name = models.CharField("Name", max_length=240)
@@ -35,7 +35,7 @@ class Post(models.Model):
     description = models.TextField("Description", null=True,blank=True)
     condition = models.CharField(max_length=50, default='Unknown', null=True,blank=True) 
     location = models.CharField(max_length=255)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=datetime.now)
     likes = models.IntegerField(default=0)
     reserved = models.BooleanField(default=False) 
     category= models.ManyToManyField(Category, related_name="posts")
