@@ -1,5 +1,5 @@
 from django.urls import path
-# from . import views
+from . import views
 
 # urlpatterns =[
 #     path('', views.userList, name="users")
@@ -13,5 +13,7 @@ router.register(r'api/posts', PostViewSet, 'posts')
 # router.register(r'api/items', ItemViewSet, 'items')
 router.register(r'api/reviews', ReviewViewSet, 'reviews') 
 router.register(r'api/users', UserViewSet, 'users') 
-router.register(r'api/categories', CategoryViewSet, 'categories') 
+router.register(r'api/categories', CategoryViewSet, 'categories')
+router.register(r'api/login', LoginViewSet, 'login')
+
 urlpatterns = router.urls
