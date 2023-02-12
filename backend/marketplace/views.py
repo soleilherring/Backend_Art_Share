@@ -46,7 +46,7 @@ class LoginViewSet(viewsets.ViewSet):
         except User.DoesNotExist:
             return Response({'message': 'Login failed'}, status=status.HTTP_400_BAD_REQUEST)
         serializer = UserSerializer(user)
-        return Response(serializer.data['id'])
+        return Response(serializer.data)
 
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
