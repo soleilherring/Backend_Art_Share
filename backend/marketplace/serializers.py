@@ -32,7 +32,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ["id","title", "images", "description", "location", "category_list", "reserved", "uploaded_images", "user_id", "date", "user"]
+        fields = ["id","title", "images", "description", "location", "category_list", "reserved", "uploaded_images", "user_id", "date", "user", "condition"]
         depth = 1
 
     def create(self, validated_data, *args, **kwargs):

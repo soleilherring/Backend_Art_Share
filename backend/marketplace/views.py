@@ -53,7 +53,7 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
 
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['user', 'category', 'title','date']
+    filterset_fields = ['user', 'category', 'title','date', 'condition','reserved']
 
 class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
