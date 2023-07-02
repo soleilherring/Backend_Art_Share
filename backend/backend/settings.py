@@ -43,8 +43,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #was true as default
 
-ALLOWED_HOSTS = ["*"] #was empty  as default
-
+# ALLOWED_HOSTS = ["*"] #was empty  as default
+ALLOWED_HOSTS = [".vercel.app"] 
 
 # Application definition
 
