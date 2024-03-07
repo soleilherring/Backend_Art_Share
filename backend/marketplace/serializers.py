@@ -9,7 +9,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    # variable that reperesnts list of items 
     posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Category
@@ -22,7 +21,6 @@ class PostImageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PostSerializer(serializers.ModelSerializer):
-    # date = serializers.DateTimeField(format="%m-%d-%Y")
     user_id = serializers.IntegerField()
     category_list = serializers.CharField(write_only=True)
     images = PostImageSerializer(many=True, read_only=True)
@@ -36,15 +34,10 @@ class PostSerializer(serializers.ModelSerializer):
         depth = 1
 
     def create(self, validated_data, *args, **kwargs):
-        print("validated", validated_data)
         uploaded_images = validated_data.pop('uploaded_images')
         category_data = validated_data.pop('category_list')
-        # user_id = validated_data.pop('user')
-        # validated_data["user_id"] = user_id
-        print("category data", category_data)
 
         post = super().create(validated_data, *args, **kwargs)
-        # post = Post.objects.create(**validated_data)
         for image in uploaded_images:
             newpost_image = PostImage.objects.create(post=post, image=image)
 
