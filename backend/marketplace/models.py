@@ -50,8 +50,6 @@ class Post(models.Model):
 class PostImage(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="images")
     image = models.ImageField(upload_to='images/',null=True,blank=True, default = '')
-    # owner = models.ForeignKey(User, on_delete=models.CASCADE)
-
 
 class Review(models.Model):
     reviewer = models.ForeignKey(User, related_name='reviewer', on_delete=models.CASCADE,  null=True,blank=True)
